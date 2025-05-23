@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Emprendedores Ubaté</title>
+  <link rel="stylesheet" href="style_full.css">
+</head>
+<body>
+  <header>
+    <h1>Red de Emprendedores de Ubaté</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('inicio')">Inicio</a>
+    <a href="#" onclick="showSection('categorias')">Categorías</a>
+    <a href="#" onclick="showSection('perfil')">Mi Perfil</a>
+    <a href="#" onclick="showSection('crear')">Crear Producto</a>
+    <a href="#" onclick="closeApp()">Salir</a>
+  </nav>
+
+  <div class="container">
+    <!-- INICIO -->
+    <section id="inicio" class="active">
+      <div class="product-card">
+        <label for="category">Filtrar por categoría:</label>
+        <select id="category">
+          <option value="all">Todas</option>
+          <option value="comida">Comida</option>
+          <option value="ropa">Ropa</option>
+          <option value="artesanias">Artesanías</option>
+        </select>
+      </div>
+      <div id="listaProductos"></div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <section id="categorias">
+      <div class="product-card"
+           onmouseover="showCategoryItems('comida','comidaList')"
+           onmouseout="clearCategoryItems('comidaList')">
+        <h2 class="product-title">Comida</h2>
+        <div id="comidaList"></div>
+      </div>
+      <div class="product-card"
+           onmouseover="showCategoryItems('ropa','ropaList')"
+           onmouseout="clearCategoryItems('ropaList')">
+        <h2 class="product-title">Ropa</h2>
+        <div id="ropaList"></div>
+      </div>
+      <div class="product-card"
+           onmouseover="showCategoryItems('artesanias','artesaniasList')"
+           onmouseout="clearCategoryItems('artesaniasList')">
+        <h2 class="product-title">Artesanías</h2>
+        <div id="artesaniasList"></div>
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section id="perfil">
+      <div class="product-card">
+        <h2 class="product-title">Mi Perfil</h2>
+        <p><strong>Nombre:</strong> Juan Pérez</p>
+        <p><strong>Reseña:</strong> “Un emprendedor apasionado por la cocina local.”</p>
+        <p><strong>Calificación:</strong> ★★★★☆</p>
+        <p><strong>Descripción de la empresa:</strong> Cocina tradicional con productos locales y orgánicos.</p>
+        <p><strong>Colaboradores:</strong> 2 personas (familiares)</p>
+        <p><strong>Ubicación:</strong> Ubaté, Cundinamarca</p>
+      </div>
+    </section>
+
+    <!-- CREAR PRODUCTO -->
+    <section id="crear">
+      <div class="product-card">
+        <h2 class="product-title">Crear Producto</h2>
+        <form onsubmit="return submitProductForm()">
+          <label for="nombreProducto">Nombre del Producto:</label>
+          <input type="text" id="nombreProducto" required>
+
+          <label for="descripcionProducto">Descripción:</label>
+          <textarea id="descripcionProducto" required></textarea>
+
+          <label for="elaboracionProducto">Cómo se elabora:</label>
+          <textarea id="elaboracionProducto" required></textarea>
+
+          <label for="precioProducto">Precio:</label>
+          <input type="number" id="precioProducto" required>
+
+          <label for="cantidadProducto">Cantidad Disponible:</label>
+          <input type="number" id="cantidadProducto" required>
+
+          <label for="vendedorProducto">Nombre del Vendedor o Empresa:</label>
+          <input type="text" id="vendedorProducto" required>
+
+          <label for="pagoProducto">Medios de Pago:</label>
+          <input type="text" id="pagoProducto" required>
+
+          <label for="categoriaProducto">Categoría:</label>
+          <select id="categoriaProducto" required>
+            <option value="comida">Comida</option>
+            <option value="ropa">Ropa</option>
+            <option value="artesanias">Artesanías</option>
+          </select>
+
+          <button type="submit" class="order-btn">Guardar Producto</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="main_full.js"></script>
+</body>
+</html>
