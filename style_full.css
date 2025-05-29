@@ -7,7 +7,7 @@ body {
 }
 
 h1, h2 {
-  font-family: Serif;
+  font-family: Cambria;
   color: #071739;
   text-align: center;
 }
@@ -15,7 +15,7 @@ h1, h2 {
 nav {
   display: flex;
   justify-content: center;
-  background-color: #3B5249;
+  background-color: #1e3d31;
   padding: 15px;
   border-radius: 30px;
   margin: 10px auto;
@@ -48,13 +48,34 @@ nav a:hover {
   margin: auto;
 }
 
+/* Layout de INICIO: imagen a la izquierda, info a la derecha */
+#inicio .product-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#inicio .product-card .image-container {
+  flex: 0 0 150px;
+}
+#inicio .product-card .image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+#inicio .product-card .info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Estilos generales de tarjetas */
 .product-card {
   background-color: #ffffff;
   border-radius: 30px;
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -64,15 +85,14 @@ nav a:hover {
 }
 
 .product-title {
-  font-family: Serif;
+  font-family: Cambria;
   font-size: 22px;
   margin-bottom: 10px;
 }
 
 .stars {
-  color: #071739;
   font-size: 18px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .order-btn {
@@ -84,6 +104,7 @@ nav a:hover {
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s;
+  align-self: start;
 }
 
 .order-btn:hover {
@@ -92,7 +113,6 @@ nav a:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-/* Estilos para los campos del formulario */
 input, textarea, select {
   width: 100%;
   padding: 10px;
@@ -108,6 +128,13 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(7,23,57,0.2);
 }
 
+img.product-image {
+  max-width: 100%;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -119,6 +146,8 @@ input:focus, textarea:focus, select:focus {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  /* permite scroll si el contenido excede la pantalla */
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -128,8 +157,36 @@ input:focus, textarea:focus, select:focus {
   border-radius: 30px;
   max-width: 500px;
   width: 90%;
-  font-family: Serif;
   box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  /* limita la altura y habilita scroll interno */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Formulario de pedido */
+.order-form {
+  margin-top: 20px;
+}
+.order-form label {
+  font-weight: bold;
+}
+.order-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.order-result.success {
+  color: green;
+}
+.order-result.failure {
+  color: red;
+}
+.order-result .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
 }
 
 .rating-stars span {
@@ -138,7 +195,6 @@ input:focus, textarea:focus, select:focus {
   color: lightgray;
   transition: transform 0.2s;
 }
-
 .rating-stars span.selected {
   color: gold;
   transform: scale(1.1);
@@ -147,7 +203,6 @@ input:focus, textarea:focus, select:focus {
 section {
   display: none;
 }
-
 section.active {
   display: block;
 }
